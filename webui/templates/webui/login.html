@@ -1,0 +1,37 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href="{% static 'webui/bower_components/bootstrap/dist/css/bootstrap.css' %}" rel="stylesheet"/>
+    <title>Vidtrage login</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div>
+                <img src="{% static 'webui/images/vitrage.jpg' %}" class="center-block img-rounded">
+            </div>
+        </div>
+        <div class="row">
+            <div class=".col-md-6 .col-md-offset-3">
+                <form class="horizontal-form">
+                    <div class="form-group">
+                        <label for="inputLoginName" class="col-sm-2 control-label">User name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="inputLoginName" placeholder="User name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-default">Sign in</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

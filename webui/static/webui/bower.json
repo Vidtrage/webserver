@@ -1,0 +1,24 @@
+{
+  "name": "webui",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Vidtrage/webserver",
+  "authors": [
+    "Ayelet Dahan <anativ@gmail.com>"
+  ],
+  "description": "Vidtrage web ui",
+  "main": "index.html",
+  "keywords": [
+    "vidtrage"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.1"
+  }
+}
