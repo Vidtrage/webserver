@@ -4,12 +4,18 @@
 		"description": "Ramzor SE01EP05",
 		"duration": 500,
 		"user": "Ayelet",
-		"slots": [
-			{
-				"start_time": 300,
-				"duration": 30,
-				"description": "happy first slot"
-			}
+	  	"scene": [
+		  {
+			"name": "xyz",
+			"description": "",
+			"start_time": 234,
+			"duration": 20,
+			"resources": [
+			  {
+				"name": "7777"
+			  }
+			]
+		  }
 		]
 	}
 ]
