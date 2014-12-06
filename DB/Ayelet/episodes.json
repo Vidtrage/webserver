@@ -1,0 +1,15 @@
+[
+	{
+		"file_path": "ramzorSE01EP05.mov",
+		"description": "Ramzor SE01EP05",
+		"duration": 500,
+		"user": "Ayelet",
+		"slots": [
+			{
+				"start_time": 300,
+				"duration": 30,
+				"description": "happy first slot"
+			}
+		]
+	}
+]
