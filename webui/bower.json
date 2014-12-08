@@ -1,0 +1,22 @@
+{
+  "name": "webui",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Vidtrage/webserver",
+  "authors": [
+    "Ayelet Dahan <anativ@gmail.com>"
+  ],
+  "description": "User Interface for Vidtrage POC",
+  "main": "login.html",
+  "keywords": [
+    "Vidtrage"
+  ],
+  "license": "\"\"",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
