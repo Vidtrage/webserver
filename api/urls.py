@@ -3,5 +3,5 @@ from api import views
 
 urlpatterns = [
     url(r'^episodes$', views.episode_list),
-    url(r'^ads$', views.ads),
+    url(r'^ads$', views.ad_list),
 ]

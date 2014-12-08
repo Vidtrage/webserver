@@ -12,7 +12,8 @@
 			"duration": 20,
 			"resources": [
 			  {
-				"name": "7777"
+				"name": "7777",
+				"ad": "gillete.mov"
 			  }
 			]
 		  }

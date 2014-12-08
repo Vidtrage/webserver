@@ -3,8 +3,8 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from api.serializer import DBSerializer
-from api.server import RenderingServer
+from api.ads import Ads
+from api.episodes import Episodes
 
 
 class JSONResponse(HttpResponse):
@@ -22,8 +22,10 @@ def episode_list(request):
     List all episodes, or create a new episode.
     """
     if request.method == 'GET':
-        episodes = DBSerializer.get_episodes()
-        return JSONResponse(episodes)
+        user = request.GET.get('user')
+        episodes = Episodes()
+        episodes_list = episodes.get_user_episodes(user)
+        return JSONResponse(episodes_list)
 
     elif request.method == 'POST':
         data = JSONParser().parse(request)
@@ -36,22 +38,28 @@ def episode_list(request):
 
 
 @csrf_exempt
-def ads(request):
+def ad_list(request):
     logging.debug('API ads')
     if request.method == 'GET':
-        ads_list = DBSerializer.get_ads()
+        user = request.GET.get('user')
+        ads = Ads()
+        ads_list = ads.get_user_ads(user)
         return JSONResponse(ads_list)
 
     elif request.method == 'POST':
         data = JSONParser().parse(request)
         logging.debug("ads POST request {0}".format(data))
-        episode = data['episode']
+        user = data['user']
         scene = data['scene']
         resource = data['resource']
         ad = data['ad']
-        server = RenderingServer()
-        server.pair(episode, scene, resource, ad)
-        return JSONResponse(DBSerializer.get_ads())
+
+        episodes = Episodes()
+        episodes_list = episodes.get_user_episodes(user)
+
+        episodes_list.pair(scene, resource, ad)
+
+        return JSONResponse(Episodes.get_user_episodes(user))
 
 
 
