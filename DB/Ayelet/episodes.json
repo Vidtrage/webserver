@@ -12,17 +12,7 @@
 			"duration": 20,
 			"resources": [
 			  {
-				"name": "7777",
-				"ad": "gillete.mov",
-				"state": "100"
-			  },
-			  {
-				"name": "8888"
-			  },
-			  {
-				"name": "8888",
-				"ad": "abs.drive",
-				"state": "-1"
+				"name": "7777"
 			  }
 			]
 		  }
