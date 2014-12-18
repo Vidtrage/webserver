@@ -36,7 +36,7 @@
 
             };
 
-            session.render = function(sessionId, adId, resourceId) {
+            session.render = function(sessionId, resourceList) {
 
             }
 

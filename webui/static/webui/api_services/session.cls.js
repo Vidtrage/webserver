@@ -10,7 +10,7 @@
                 var _sessionId = sessionId;
 
                 that.open = function() {
-                    $http.get('/api/session/' + episode.id)
+                    return $http.get('/api/session/' + episode.id)
                         .then(function(sessionId) {
                             _sessionId = sessionId;
                             return sessionId;
@@ -21,7 +21,7 @@
                 };
 
                 that.close = function() {
-                    $http.delete('/api/session/' + episode.id)
+                    return $http.delete('/api/session/' + episode.id)
                         .then(function() {
                             // release resources
                             _episode = undefined;
@@ -33,8 +33,17 @@
                         });
                 };
 
-                that.render = function(sceneId, resourceId, ad) {
+                that.render = function(sceneId, resourceList) {
+                    return $http.post('/api/session/' + _sessionId + '/' + sceneId, resourceList);
+                };
 
+                that.cancelRender = function(sceneId) {
+                    return $http.delete('/api/session/' + _sessionId + '/' + sceneId + sceneId);
+                };
+
+                that.requestNewStream = function(streamId) {
+                    var streamId = streamId || '';
+                    return $http.get('/api/session' + _sessionId + '/' + sceneId + '/' + streamId);
                 };
             };
 

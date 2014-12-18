@@ -64,7 +64,11 @@
 
                 });
 
-                it("should pair (render) Ad to Episode resource", function() {
+                it("should pair (render) a list of resources and their ads", function() {
+
+                });
+
+                it("should cancel a render request", function() {
 
                 });
 
