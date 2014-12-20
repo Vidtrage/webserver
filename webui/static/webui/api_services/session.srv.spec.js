@@ -1,16 +1,31 @@
 (function() {
     'use strict';
 
-    var SessionService, $log, $httpBackend;
+    var SessionService, $log, $q, $httpBackend;
     describe("Session management", function() {
 
         beforeEach(module('vidtrage.api.session'));
 
         beforeEach(function() {
+            module(function($provide) {
+                $provide.value('Ad', function() {return {};});
+                $provide.value('Episode', function() {return {};});
+                $provide.value('Session', {
+                    open: function(ep) {
+                        var deferred = $q.defer();
+                        deferred.resolve(parseInt(Math.random()*100)) // session id
+                        return deferred.promise;
+                    };
+                });
+            });
+        });
 
-            inject(function(_SessionService_, _$log_, _$httpBackend_) {
+        beforeEach(function() {
+
+            inject(function(_SessionService_, _$log_, _$q_, _$httpBackend_) {
                     SessionService = _SessionService_;
                     $log = _$log_;
+                    $q = _$q_;
                     $httpBackend = _$httpBackend_;
                 });
             });
@@ -57,6 +72,10 @@
             // There may be multiple registered context objects (pairing setups)
             describe("Session", function() {
                 it("should open a new session", function() {
+                    var ep = new Episode();
+                    SessionService.open(ep).then(function(sessionId) {
+                        expect(sessionId).toEqual(jasmine.any(Number));
+                    });
 
                 });
 

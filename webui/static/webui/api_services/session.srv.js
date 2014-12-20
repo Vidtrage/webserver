@@ -1,8 +1,8 @@
 (function() {
     'use strict';
 
-    angular.module('vidtrage.api.session', [])
-        .service('SessionService', ['$log', '$http', function($log, $http) {
+    angular.module('vidtrage.api.session', ['vidtrage.session'])
+        .service('SessionService', ['$log', '$http', 'Session', function($log, $http, Session) {
         
             var sessionService = {};
 
@@ -28,8 +28,16 @@
                     });
             };
 
-            sessions.open = function(episodeId) {
+            sessions.open = function(episode) {
+                var session = new Session(episode);
+                return session.open().then(function(sessionId) {
+                    // store session
+                    sessions[sessionId] = session;
 
+                    return sessionId;
+                }, function() {
+                    $log.warn('SessionService.open session did not open for episode', episode.id);
+                });
             };
 
             session.close = function(sessionId) {
