@@ -1,0 +1,83 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html ng-app>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link href="{% static 'webui/bower_components/bootstrap/dist/css/bootstrap.css' %}" rel="stylesheet"/>
+    <title>TAP</title>
+</head>
+<body>
+    <h1>TAP System</h1>
+    <div ng-controller="TAPController">
+        <div ng-controller="EpisodesListController">
+            <h2>Episode list</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Episode name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="episode in episodes">
+                        <td><a ng-click="play(episode)">play</a></td>
+                        <td><input type="radio" ng-model="selectedEpisode" ng-value="episode"/></td>
+                        <td>{{episode.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-controller="AdsListController">
+            <h2>Ads list</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Ad name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="ad in ads">
+                        <td><a ng-click="play(ad)">play</a></td>
+                        <td>{{ad.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div ng-controller="EpisodeResourceController">
+            <h3>Bind resources</h3>
+            <div><a ng-click="playBindedEpisode()">Play binded episode</a></div>
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Resource name</th>
+                        <th>Ad name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="resource in resources">
+                        <td><a ng-click="play(resource)">play</a></td>
+                        <td>{{resource.name}}</td>
+                        <td>
+                            <select ng-model="resource.ad">
+                                <option ng-repeat="ad in ads" value="ad.name"></option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div>
+            <video ng-src="videoToPlay"></video>
+        </div>
+    </div>
+
+    <script src="{% static 'webui/bower_componenets/angular/angular.min.js' %}"></script>
+    <script src="{% static 'webui/tap/tap.ctrl.js' %}"></script>
+</body>
+</html>
