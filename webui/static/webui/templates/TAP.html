@@ -1,16 +1,17 @@
-{% load staticfiles %}
-
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="vidtrage.tap">
 <head lang="en">
     <meta charset="UTF-8">
-    <link href="{% static 'webui/bower_components/bootstrap/dist/css/bootstrap.css' %}" rel="stylesheet"/>
+    <link href="/static/webui/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <script src="/static/webui/bower_components/angular/angular.min.js"></script>
+    <script src="/static/webui/tap/tap.ctrl.js"></script>
+
     <title>TAP</title>
 </head>
 <body>
     <h1>TAP System</h1>
     <div ng-controller="TAPController">
-        <div ng-controller="EpisodesListController">
+        <div>
             <h2>Episode list</h2>
             <table>
                 <thead>
@@ -29,7 +30,7 @@
                 </tbody>
             </table>
         </div>
-        <div ng-controller="AdsListController">
+        <div>
             <h2>Ads list</h2>
             <table>
                 <thead>
@@ -46,7 +47,7 @@
                 </tbody>
             </table>
         </div>
-        <div ng-controller="EpisodeResourceController">
+        <div>
             <h3>Bind resources</h3>
             <div><a ng-click="playBindedEpisode()">Play binded episode</a></div>
             <table>
@@ -73,11 +74,11 @@
 
 
         <div>
-            <video ng-src="videoToPlay"></video>
+            <video controls>
+                <source src="{{videoToPlay.path}}" type="{{videoToPlay.type}}" />
+            </video>
         </div>
     </div>
 
-    <script src="{% static 'webui/bower_componenets/angular/angular.min.js' %}"></script>
-    <script src="{% static 'webui/tap/tap.ctrl.js' %}"></script>
 </body>
 </html>
