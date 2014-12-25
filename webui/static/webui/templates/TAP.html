@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link href="/static/webui/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <script src="/static/webui/bower_components/angular/angular.min.js"></script>
+    <script src="/static/webui/tap/video.drctv.js"></script>
     <script src="/static/webui/tap/tap.ctrl.js"></script>
 
     <title>TAP</title>
@@ -74,9 +75,7 @@
 
 
         <div>
-            <video controls>
-                <source src="{{videoToPlay.path}}" type="{{videoToPlay.type}}" />
-            </video>
+            <tap-video sources="videoToPlay"></tap-video>
         </div>
     </div>
 
