@@ -6,12 +6,12 @@
             return {
                 restrict: 'E',
                 template: '<video controls></video>',
+                replace: true,
                 scope: {
                     sources: '='
                 },
-                link: function($scope, videoCtrlElement, attributes) {
+                link: function($scope, videoElement, attributes) {
 
-                    var videoElement = videoCtrlElement.find('video');
 
                     $scope.$watch('sources', function(newSources) {
                         if (!Array.isArray(newSources)) {
@@ -23,11 +23,10 @@
                         newSources.forEach(function(source) {
                             addSourceToVideo(source);
                         });
-                        $scope.$apply();
                     });
 
                     var clearControlSources = function() {
-                        videoCtrlElement.children().remove();
+                        videoElement.children().remove();
                     };
 
                     var addSourceToVideo = function(source) {

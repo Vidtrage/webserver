@@ -12,8 +12,8 @@
             }];
             $scope.ads = [{'name': 'myad',
                 'sources': [{
-                    'path': 'http://techslides.com/demos/sample-videos/small.webm',
-                    'type': 'video/webm'
+                    'path': 'http://clips.vorwaerts-gmbh.de/VfE_html5.mp4',
+                    'type': 'video/mp4'
                 }]
             }];
             $scope.resources = [];
