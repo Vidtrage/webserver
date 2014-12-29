@@ -2,25 +2,30 @@
     'use strict';
 
     angular.module('vidtrage.api.session', ['vidtrage.session'])
-        .service('SessionService', ['$log', '$http', 'Session', function($log, $http, Session) {
+        .service('SessionService', ['$log', '$http', 'Episode', function($log, $http, Episode) {
         
             var sessionService = {};
+            var _episodesJSON = [
+                {'name': 'myep1', 'source': 'http://techslides.com/demos/sample-videos/small.webm'},
+                {'name': 'myep2', 'source': 'http://download.wavetlan.com/SVV/Media/HTTP/MP4/ConvertedFiles/Media-Convert/Unsupported/dw11222.mp4'},
+                {'name': 'myep3', 'source': 'http://download.wavetlan.com/SVV/Media/HTTP/MP4/ConvertedFiles/Media-Convert/Unsupported/test7.mp4'},
+                {'name': 'myep4', 'source': 'http://download.wavetlan.com/SVV/Media/HTTP/MP4/ConvertedFiles/MediaCoder/MediaCoder_test2_1m10s_XVID_VBR_131kbps_480x320_25fps_AACLCv4_VBR_32kbps_Stereo_24000Hz.mp4'}
+            ];
 
             // key: contextId as returned from server
             // value: context object
-            sessions = {};
 
-            sessions.getEpisodes = function(userId) {
-                return $http.request('/api/episodes?user=' + userId)
+            sessionService.getEpisodes = function(userId) {
+                return $http.get('/api/episodes?user=' + userId)
                     .then(function(episodesJSON) {
-                        return JSONToObject(episodesJSON, Episode);
+                        return JSONToObject(_episodesJSON, Episode);
                     }, function(errorReason) {
                         $log.error("SessionService.getEpisodes failed", errorReason);
                     });
             };
 
-            sessions.getAds = function(userId) {
-                return $http.request('/api/ads?user=' + userId)
+            sessionService.getAds = function(userId) {
+                return $http.get('/api/ads?user=' + userId)
                     .then(function(adsJSON) {
                         return JSONToObject(adsJSON, Ad);
                     }, function(errorReason) {
@@ -28,7 +33,7 @@
                     });
             };
 
-            sessions.open = function(episode) {
+            sessionService.open = function(episode) {
                 var session = new Session(episode);
                 return session.open().then(function(sessionId) {
                     // store session
@@ -40,11 +45,11 @@
                 });
             };
 
-            session.close = function(sessionId) {
+            sessionService.close = function(sessionId) {
 
             };
 
-            session.render = function(sessionId, resourceList) {
+            sessionService.render = function(sessionId, resourceList) {
 
             }
 

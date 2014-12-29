@@ -5,7 +5,7 @@
         .directive('tapVideo', ['$log', function($log) {
             return {
                 restrict: 'E',
-                template: '<video controls></video>',
+                template: '<video controls autoplay></video>',
                 replace: true,
                 scope: {
                     source: '='

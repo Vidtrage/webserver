@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('vidtrage.episode.scene', [])
-        .factory('Scene', [$log, function($log) {
+        .factory('Scene', ['$log', function($log) {
 
             function Scene() {
 
