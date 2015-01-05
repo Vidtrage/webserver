@@ -7,4 +7,4 @@ def login(request):
 
 
 def tap(request):
-    return render(request, 'webui/TAP.html')
+    return render(request, 'TAP.html')

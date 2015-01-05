@@ -11,17 +11,29 @@
 					return new Episode(arguments);
 				}
 
+				if (!angular.isObject(obj)) {
+					$log.warn("Episode Invalid constructor params", obj);
+					obj = {};
+				}
+
 				////////////////////////
 				// Private Members //
 				////////////////////////
 
 				var that = this;
-				var _name;
+				var _name = obj.name;
+				var _source = obj.source;
 				var _duration;
 				var _description;
 				var _user;
 				var _scenes = [];
 
+				Object.defineProperty(that, "name", {
+					get: function() {return _name; }
+				});
+				Object.defineProperty(that, "source", {
+					get: function() {return _source; }
+				});
             }
 
 
