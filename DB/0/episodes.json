@@ -1,10 +1,10 @@
 [
 	{
-		"file_path": "ramzorSE01EP05.mov",
+		"file_path": "http://techslides.com/demos/sample-videos/small.webm",
 		"description": "Ramzor SE01EP05",
 		"duration": 500,
 		"user": "Ayelet",
-	  	"scene": [
+	  	"scenes": [
 		  {
 			"name": "xyz",
 			"description": "",

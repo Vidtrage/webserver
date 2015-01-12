@@ -22,19 +22,38 @@
 
 				var that = this;
 				var _name = obj.name;
-				var _source = obj.source;
-				var _duration;
-				var _description;
-				var _user;
-				var _scenes = [];
+				var _filePath = obj.file_path;
+				var _duration = obj.duration;
+				var _description = obj.description;
+				var _user = obj.user;
+				var _scenes = obj.scenes;
 
 				Object.defineProperty(that, "name", {
-					get: function() {return _name; }
+					get: function() {return _description; }
 				});
 				Object.defineProperty(that, "source", {
-					get: function() {return _source; }
+					get: function() {return _filePath; }
 				});
+
+				var initScenes = function(episode) {
+					_scenes = [];
+
+					if (!angular.isObject(episode) || !Array.isArray(episode.scenes)) {
+						$log.warn('Episode initScenes invalid scenes array', episode);
+						return;
+					}
+
+
+					episode.scenes.forEach(function(scene) {
+						scene = new Scene(scene);
+
+						if (scene instanceof Scene){
+							_scenes.push(scene);
+						}
+					});
+				}
             }
+
 
 
             // return the factory function

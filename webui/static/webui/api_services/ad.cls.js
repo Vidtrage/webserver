@@ -21,18 +21,18 @@
 				////////////////////////
 
 				var that = this;
-                var _name = obj.name,
+                var _filePath = obj.file_path,
                     _source = obj.source,
-                    _description,
-                    _uploadPath,
-                    _duration,
-                    _user
+                    _description = obj.description,
+                    _uploadPath = obj.upload_path,
+                    _duration = obj.duration,
+                    _user = obj.user;
 
 				Object.defineProperty(that, "name", {
-					get: function() {return _name; }
+					get: function() {return _description; }
 				});
 				Object.defineProperty(that, "source", {
-					get: function() {return _source; }
+					get: function() {return _filePath; }
 				});
 
             };
