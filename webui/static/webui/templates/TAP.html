@@ -30,7 +30,7 @@
                 <tbody>
                     <tr ng-repeat="episode in episodes">
                         <td><a ng-click="play(episode)">play</a></td>
-                        <td><input type="radio" ng-model="selectedEpisode" ng-value="episode"/></td>
+                        <td><input type="radio" ng-model="selectedEpisode" ng-value="episode" ng-change="updateResources(episode)"/></td>
                         <td>{{episode.name}}</td>
                     </tr>
                 </tbody>

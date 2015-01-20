@@ -12,6 +12,16 @@
                 $scope.videoToPlay = videoEntity.source;
             };
 
+            $scope.updateResources = function(episode) {
+                $scope.resources = [];
+
+                episode.getScenes().forEach(function(scene) {
+                    scene.getResources().forEach(function(resource) {
+                        $scope.resources.push(resource);
+                    });
+                });
+            };
+
             var init = function() {
                 SessionService.getEpisodes(0)
                     .then(function(episodes) {

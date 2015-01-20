@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('vidtrage.episode', ['vidtrage.episode.scene'])
-        .factory('Episode', ['$log', function($log) {
+        .factory('Episode', ['$log', 'Scene', function($log, Scene) {
 
             function Episode(obj) {
 
@@ -26,7 +26,7 @@
 				var _duration = obj.duration;
 				var _description = obj.description;
 				var _user = obj.user;
-				var _scenes = obj.scenes;
+				var _scenes = [];
 
 				Object.defineProperty(that, "name", {
 					get: function() {return _description; }
@@ -36,8 +36,6 @@
 				});
 
 				var initScenes = function(episode) {
-					_scenes = [];
-
 					if (!angular.isObject(episode) || !Array.isArray(episode.scenes)) {
 						$log.warn('Episode initScenes invalid scenes array', episode);
 						return;
@@ -52,6 +50,12 @@
 						}
 					});
 				}
+				initScenes(obj);
+
+
+				that.getScenes = function() {
+					return _scenes;
+				};
             }
 
 
