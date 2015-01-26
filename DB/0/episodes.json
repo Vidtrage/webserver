@@ -11,9 +11,38 @@
 			"start_time": 234,
 			"duration": 20,
 			"resources": [
-			  {
-				"name": "7777"
-			  }
+			  {	"name": "7777" },
+			  {	"name": "Billboard KM101" },
+			  {	"name": "Kid iPhone" },
+			  {	"name": "Happiness is not everything" }
+			]
+		  }
+		]
+	},
+	{
+		"file_path": "http://techslides.com/demos/sample-videos/small.webm",
+		"description": "Captain jack axe",
+		"duration": 1250,
+		"user": "Ayelet",
+	  	"scenes": [
+		  {
+			"name": "xyz",
+			"description": "burning tree",
+			"start_time": 234,
+			"duration": 20,
+			"resources": [
+			  {	"name": "Boeing background" },
+			  {	"name": "Aloha" }
+			]
+		  },
+		  {
+			"name": "112233",
+			"description": "shooting down the bad guys",
+			"start_time": 543,
+			"duration": 151,
+			"resources": [
+			  {	"name": "Bus ride" },
+			  {	"name": "Lobengulu king of Zulu" }
 			]
 		  }
 		]
